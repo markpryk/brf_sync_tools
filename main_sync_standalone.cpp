@@ -36,7 +36,7 @@ unsigned int tuneColor(unsigned int col, int c, int h, int s, int b) {
 }
 
 static void printUsage(const char* progName) {
-    std::cout << "BRF Synchronizer v2.0 (standalone)\n"
+    std::cout << "BRF Synchronizer v0.8 (standalone)\n"
               << "Usage:\n"
               << "  " << progName << " export   <source.brf> <dest_folder>    Export BRF to folder (JSON + OBJ/SMD)\n"
               << "  " << progName << " import   <source_folder> <dest.brf>    Import folder back to BRF\n"
@@ -127,7 +127,7 @@ int main(int argc, char* argv[]) {
     }
 
     if (command == "--version" || command == "-v") {
-        std::cout << "BRF Synchronizer v2.0 (standalone, Qt-free)" << std::endl;
+        std::cout << "BRF Synchronizer v0.8 (standalone, Qt-free)" << std::endl;
         return 0;
     }
 
