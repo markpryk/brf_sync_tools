@@ -1,6 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
-
+cd /d "%~dp0"
 echo ==========================================
 echo Building BRF Synchronizer (standalone, Qt-free)
 echo ==========================================
@@ -8,10 +8,17 @@ echo ==========================================
 :: 0. Check for cmake
 where cmake >nul 2>nul
 if %ERRORLEVEL% NEQ 0 (
-    echo [ERROR] cmake not found in PATH.
-    echo Please install CMake: https://cmake.org/download/
-    pause
-    exit /b 1
+    set "VSCMAKE=C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin"
+    if exist "!VSCMAKE!\cmake.exe" (
+        echo [INFO] Using Visual Studio CMake
+        set "PATH=!VSCMAKE!;%PATH%"
+    ) else (
+        echo [ERROR] cmake not found in PATH or Visual Studio 2022.
+        echo Please install CMake: https://cmake.org/download/
+        echo Or run this from a Visual Studio Developer Command Prompt.
+        pause
+        exit /b 1
+    )
 )
 
 :: 1. Configure
